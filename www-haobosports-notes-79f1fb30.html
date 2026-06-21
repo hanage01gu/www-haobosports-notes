@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>好博体育 · 资料索引与信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f4f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2a3a;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    /* 开场区域 — 简短叙述 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+      border: 1px solid #e6eaef;
+      padding: 2.5rem 2rem 2.2rem;
+    }
+
+    .hero-card .opening {
+      font-size: 1.5rem;
+      font-weight: 420;
+      letter-spacing: 0.01em;
+      color: #1b2a40;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card .opening strong {
+      font-weight: 520;
+      color: #1f3a5f;
+    }
+
+    .hero-card .intro-para {
+      font-size: 1rem;
+      color: #2e3b4c;
+      max-width: 90%;
+    }
+
+    /* 承接段落卡片 — 资料整理视角 */
+    .bridge-card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 3px 9px rgba(0,0,0,0.02);
+      border: 1px solid #e0e6ed;
+      padding: 2rem 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .bridge-card .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #6f7c8c;
+      background: #eef2f7;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      width: fit-content;
+    }
+
+    .bridge-card p {
+      font-size: 1rem;
+      color: #253241;
+      margin-bottom: 0.4rem;
+    }
+
+    .bridge-card a {
+      color: #1f4e7a;
+      text-decoration: none;
+      border-bottom: 1px dotted #b3c4d6;
+      transition: border-color 0.2s;
+    }
+
+    .bridge-card a:hover {
+      border-bottom: 1px solid #1f4e7a;
+    }
+
+    /* 特点列表 — 卡片式网格 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-item {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 1px 1px rgba(0,0,0,0.02);
+      border: 1px solid #e2e8f0;
+      padding: 1.6rem 1.4rem 1.5rem;
+      transition: box-shadow 0.15s, transform 0.1s;
+    }
+
+    .feature-item:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+    }
+
+    .feature-item .icon-symbol {
+      font-size: 1.8rem;
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #3b5f7a;
+      opacity: 0.7;
+    }
+
+    .feature-item h3 {
+      font-size: 1.1rem;
+      font-weight: 540;
+      margin-bottom: 0.4rem;
+      color: #1f3044;
+    }
+
+    .feature-item p {
+      font-size: 0.88rem;
+      color: #3a485b;
+    }
+
+    /* 温和结尾 — 类似FAQ摘要 */
+    .closing-section {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e3e9f1;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+      padding: 2rem 2rem 1.8rem;
+    }
+
+    .closing-section h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1d3147;
+      margin-bottom: 1.2rem;
+      border-left: 4px solid #a0b8d0;
+      padding-left: 1rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 520;
+      color: #1d2c3f;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.92rem;
+      color: #3d4d62;
+      padding-left: 0.5rem;
+    }
+
+    .closing-note {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: #364b62;
+      border-top: 1px solid #e2e9f2;
+      padding-top: 1.3rem;
+    }
+
+    .closing-note a {
+      color: #1c4e7c;
+      text-decoration: none;
+      border-bottom: 1px solid #b8cbdf;
+    }
+
+    .closing-note a:hover {
+      border-bottom: 1px solid #1c4e7c;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+      .hero-card {
+        padding: 1.8rem 1.2rem;
+      }
+      .hero-card .opening {
+        font-size: 1.3rem;
+      }
+      .hero-card .intro-para {
+        max-width: 100%;
+      }
+      .bridge-card {
+        padding: 1.5rem 1.2rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .closing-section {
+        padding: 1.6rem 1.2rem;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 820px) {
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 开场短句 -->
+  <div class="hero-card">
+    <div class="opening">
+      <strong>好博体育</strong> · 一份安静的说明
+    </div>
+    <div class="intro-para">
+      从资料整理与信息索引的视角出发，我们试图呈现一个更清晰的轮廓——<br>
+      不是为了包装，而是为了让感兴趣的人快速了解这个站点的结构与内容方向。
+    </div>
+  </div>
+
+  <!-- 承接段落：信息索引的切入点 -->
+  <div class="bridge-card">
+    <span class="section-label">索引·轮廓</span>
+    <p>
+      如果你之前接触过运动相关的资讯或平台，或许会注意信息分散带来的筛选成本。
+      好博体育这个站点，在内容组织上尝试把不同运动类型、赛事动态和背景资料归拢到同一套逻辑下。
+      它更像一个持续更新的信息目录，而非单一的新闻源。
+    </p>
+    <p>
+      目前站内覆盖的条目涉及赛事回顾、运动项目基础介绍、以及部分训练常识类短文。
+      整体风格偏重资料性，适合需要快速定位信息的人。当然，任何索引都需要使用者亲自验证其匹配度。
+      如果你好奇实际内容面貌，可以直接前往 <a href="https://www-haobosports.com">好博体育</a> 浏览。
+    </p>
+  </div>
+
+  <!-- 特点列表 -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <span class="icon-symbol">⊞</span>
+      <h3>分类整理</h3>
+      <p>按运动项目、赛事类型、内容形式划分，减少浏览时的信息噪音。</p>
+    </div>
+    <div class="feature-item">
+      <span class="icon-symbol">⊟</span>
+      <h3>条目式呈现</h3>
+      <p>每一条内容都带有明确的标题与摘要，方便快速判断是否需要深入阅读。</p>
+    </div>
+    <div class="feature-item">
+      <span class="icon-symbol">⊡</span>
+      <h3>静态结构</h3>
+      <p>采用轻量级页面结构，加载速度较快，对移动设备相对友好。</p>
+    </div>
+    <div class="feature-item">
+      <span class="icon-symbol">⟡</span>
+      <h3>聚焦运动本身</h3>
+      <p>内容围绕运动规则、历史、赛事数据等客观信息，不渲染情绪或主观评价。</p>
+    </div>
+  </div>
+
+  <!-- 温和结尾 + FAQ摘要风格 -->
+  <div class="closing-section">
+    <h2>一些你可能想问的</h2>
+    <div class="faq-item">
+      <div class="q">— 这个站适合什么样的人看？</div>
+      <div class="a">对运动项目感兴趣、需要快速查阅基础资料的人，或者想从一条线索开始深入某个运动领域。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">— 信息会定期更新吗？</div>
+      <div class="a">根据现有页面记录，内容会不定期补充和修订，具体更新频率可留意站点本身动态。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">— 我可以直接使用站内资料吗？</div>
+      <div class="a">建议先阅读站内可能存在的版权或引用说明，索引类内容一般鼓励参考原文出处。</div>
+    </div>
+
+    <div class="closing-note">
+      如果以上片段让你产生进一步了解的意愿，不妨直接打开 
+      <a href="https://www-haobosports.com">好博体育</a>，按你自己的节奏浏览。
+      资料整理的意义，在于帮助每个人更高效地找到自己需要的部分。
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
