@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>米兰体育 · 赛事查询与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f3f0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      line-height: 1.6;
+      color: #1d1b1a;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ----- 深色头图（hero）叙事开场 ----- */
+    .hero {
+      background: linear-gradient(145deg, #1a2729 0%, #0f1b1d 100%);
+      color: #e9e3db;
+      padding: 3.5rem 2rem 3rem;
+      border-radius: 28px 28px 12px 12px;
+      margin-bottom: 2.8rem;
+      text-align: center;
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero p {
+      max-width: 750px;
+      margin: 0 auto;
+      font-size: 1.35rem;
+      font-weight: 350;
+      letter-spacing: 0.03em;
+      line-height: 1.8;
+      color: #d6d0c6;
+    }
+
+    .hero p:first-child {
+      font-size: 1.8rem;
+      font-weight: 420;
+      color: #f2ebe0;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ----- 正文区域（浅色） ----- */
+    .content-section {
+      background: #ffffff;
+      padding: 2.5rem 2.2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.4rem;
+    }
+
+    .content-section h2 {
+      font-size: 1.65rem;
+      font-weight: 550;
+      color: #1e2c2b;
+      letter-spacing: -0.01em;
+      border-left: 6px solid #b48c5c;
+      padding-left: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .content-section p {
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+
+    .content-section ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem 1.8rem;
+      margin: 1.8rem 0 0.8rem;
+    }
+
+    .content-section ul li {
+      background: #f9f7f4;
+      padding: 0.9rem 1.2rem;
+      border-radius: 40px 12px 12px 40px;
+      border-left: 4px solid #b48c5c;
+      font-weight: 420;
+      color: #1f2a28;
+      font-size: 1rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .content-section ul li::before {
+      content: "·";
+      color: #b48c5c;
+      font-weight: 700;
+      margin-right: 0.6rem;
+      font-size: 1.3rem;
+    }
+
+    .inline-link {
+      color: #9a6d3e;
+      text-decoration: none;
+      font-weight: 480;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.15s ease, color 0.15s;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #9a6d3e;
+      color: #7a532f;
+    }
+
+    .soft-highlight {
+      background: #f1ede8;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-style: normal;
+      color: #2d3b38;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .note-card {
+      background: #f9f7f4;
+      padding: 1.3rem 1.5rem;
+      border-radius: 18px;
+      border: 1px solid #e6dfd6;
+    }
+
+    .note-card h3 {
+      font-size: 1.15rem;
+      font-weight: 540;
+      margin-bottom: 0.6rem;
+      color: #1e2c2b;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .note-card p {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      color: #3a4441;
+    }
+
+    .faq-mini {
+      margin-top: 1.5rem;
+      border-top: 1px dashed #dad3c9;
+      padding-top: 1.5rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.7rem;
+      border-radius: 10px;
+      background: #f9f7f4;
+      padding: 0.2rem 1rem 0.2rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 490;
+      cursor: pointer;
+      color: #1e2c2b;
+      padding: 0.6rem 0;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      color: #b48c5c;
+    }
+
+    .faq-mini details p {
+      margin: 0.4rem 0 0.8rem 0.8rem;
+      font-size: 0.95rem;
+      color: #3a4441;
+    }
+
+    .ending-note {
+      background: #ffffff;
+      padding: 1.8rem 2.2rem;
+      border-radius: 20px;
+      border: 1px solid #e2dbd1;
+      text-align: center;
+      color: #2f3d3a;
+      max-width: 760px;
+      margin: 2.2rem auto 0;
+    }
+
+    .ending-note p {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .ending-note .small-meta {
+      font-size: 0.85rem;
+      color: #7b807b;
+      margin-top: 0.6rem;
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        padding: 1rem 0.8rem 3rem;
+      }
+      .hero {
+        padding: 2.5rem 1.2rem;
+        border-radius: 18px;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .hero p:first-child {
+        font-size: 1.4rem;
+      }
+      .content-section {
+        padding: 1.8rem 1.2rem;
+      }
+      .content-section h2 {
+        font-size: 1.35rem;
+        padding-left: 0.9rem;
+      }
+      .two-column {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .content-section ul {
+        grid-template-columns: 1fr;
+      }
+      .ending-note {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- 深色头图 · 叙事开场 -->
+    <header class="hero">
+      <p>从一场查询开始。</p>
+      <p>你可能只是想知道某场比赛的日程，或是一支球队近期的状态。然后你发现，围绕体育资讯的检索、对照和延伸，本身就是一种乐趣。这也是我们持续整理 <a href="https://china--milansports.com" class="inline-link" style="color:#dcc9b0; border-bottom-color:#b48c5c;">米兰体育</a> 相关内容的原因——让信息更清晰，让查找更顺手。</p>
+    </header>
+
+    <!-- 介绍承接段落 -->
+    <section class="content-section">
+      <h2>日常查询 · 对照 · 延伸</h2>
+      <p>当你打开一个体育页面，通常带着具体的问题：明天凌晨的焦点战几点开球？某位球员最近五场的效率如何？联赛积分榜又发生了什么变化？<span class="soft-highlight">米兰体育</span> 所覆盖的赛事资料，正是为了回应这些日常而存在。它不是一个新闻推送流，而是一个可以反复回来核对的参照库。</p>
+      <p>很多人习惯在赛前赛后都来看一眼：赛前确认阵容和时间，赛后对照数据和高光。偶尔也会顺着某条线索往下读，比如一支球队的战术演变，或者某项纪录的历史排名。这种从查询到延伸的阅读节奏，恰恰是体育迷最自然的状态。</p>
+
+      <!-- 特点列表（卡片式） -->
+      <ul>
+        <li>赛程与结果 —— 按联赛、日期快速定位</li>
+        <li>球队与球员档案 —— 赛季数据、过往对阵</li>
+        <li>积分榜与排名变动 —— 纵向对比升降趋势</li>
+        <li>赛事规则与背景说明 —— 减少重复搜索</li>
+        <li>延伸阅读 —— 相关纪录、战术笔记、赛季回顾</li>
+      </ul>
+    </section>
+
+    <!-- 场景 + 温馨提示 (双栏) -->
+    <div class="two-column">
+      <div class="note-card">
+        <h3>📋 三个常见场景</h3>
+        <p><strong>· 赛前确认</strong> —— 查开球时间、转播信息、预计首发（如有更新）。</p>
+        <p><strong>· 赛后对照</strong> —— 把看到的比赛和自己的记录做比对，看数据是否吻合。</p>
+        <p><strong>· 横向延伸</strong> —— 从一场比赛延伸到两队历史交锋，或者某个进球纪录的排名。</p>
+      </div>
+      <div class="note-card">
+        <h3>📎 使用提示</h3>
+        <p>页面内容以整理和汇总为主，不追求实时秒级更新，但力求准确和可读。如果你发现某项信息需要修正，或希望增加某个对照维度，可以记录下来作为后续参考。体育信息本身流动很快，一个稳定的参照点反而能帮你节省时间。</p>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 (简洁实用) -->
+    <section class="content-section" style="margin-top: -0.2rem;">
+      <div class="faq-mini">
+        <details>
+          <summary>如何在米兰体育上快速找到某支球队的赛程？</summary>
+          <p>通常你可以按联赛或赛事名称筛选，再根据日期范围缩小结果。球队页面会集中显示该队近期与未来的所有安排。</p>
+        </details>
+        <details>
+          <summary>数据一般多久更新一次？</summary>
+          <p>主要比赛的结果会在结束后数小时内整理上线。赛季中的积分榜、球员数据会随比赛进程阶段性刷新。</p>
+        </details>
+        <details>
+          <summary>延伸阅读和普通新闻有什么区别？</summary>
+          <p>延伸阅读更侧重背景梳理和横向对比，比如某支球队的赛季转折点、某项纪录的演变过程，而不是短时效的即时报道。</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 温和结尾 -->
+    <div class="ending-note">
+      <p>体育资讯的价值，有时不在于快，而在于<strong>可以反复回来确认</strong>。</p>
+      <p>无论是赛前查阅、赛后对照，还是顺着一条线索延伸阅读，<a href="https://china--milansports.com" class="inline-link">米兰体育</a> 都希望成为那个可信的起点。</p>
+      <p class="small-meta">—— 一个注重整理与对照的体育信息页面 · 日常使用参考</p>
+    </div>
+
+  </div>
+</body>
+</html>
